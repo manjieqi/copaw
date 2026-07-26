@@ -12,6 +12,13 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - tag: latest
+            china_mirror: "false"
+          - tag: china
+            china_mirror: "true"
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -25,11 +32,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build and push (${{ matrix.tag }})
         uses: docker/build-push-action@v7
         with:
           context: .
           push: true
-          tags: manjieqi/copaw:latest
+          tags: manjieqi/copaw:${{ matrix.tag }}
           build-args: |
-            USE_CHINA_MIRROR=false
+            USE_CHINA_MIRROR=${{ matrix.china_mirror }}

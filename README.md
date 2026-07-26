@@ -17,6 +17,11 @@
 
 ## 快速开始
 
+两个版本可选：
+
+- `manjieqi/copaw:latest` — 海外源
+- `manjieqi/copaw:china` — 内置国内镜像（清华 apt/pypi、npmmirror），容器内 apt/pip install 更快
+
 ### docker
 
 ```bash
