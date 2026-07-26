@@ -17,18 +17,12 @@
 
 ## 快速开始
 
-```bash
+```powershell
 # 拉取镜像
-docker pull manjieqi/copaw
+wslc pull manjieqi/copaw
 
 # 启动（暴露 8088 端口）
-docker run -d --name copaw --restart unless-stopped -p 8088:8088 \
-  -v ./data:/app/data \
-  -v ./secret:/app/secret \
-  -v ./backups:/app/backups \
-  -v playwright-cache:/root/.cache/ms-playwright \
-  -e QWENPAW_PORT=8088 \
-  manjieqi/copaw
+wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secret:/app/secret" -v "${PWD}\backups:/app/backups" -e QWENPAW_PORT=8088 manjieqi/copaw
 ```
 
 或用 compose：
