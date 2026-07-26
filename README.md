@@ -56,11 +56,5 @@ docker build --build-arg WITH_LIBREOFFICE=false -t manjieqi/copaw .
 ### wslc（WSL 原生容器运行时）
 
 ```powershell
-wslc run -d --name copaw -p 8088:8088 `
-  -v "${PWD}\data:/app/data" `
-  -v "${PWD}\secret:/app/secret" `
-  -v "${PWD}\backups:/app/backups" `
-  -v playwright-cache:/root/.cache/ms-playwright `
-  -e QWENPAW_PORT=8088 `
-  manjieqi/copaw
+wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secret:/app/secret" -v "${PWD}\backups:/app/backups" -e QWENPAW_PORT=8088 manjieqi/copaw
 ```
