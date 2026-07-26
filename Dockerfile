@@ -60,7 +60,7 @@ RUN if [ "$CONFIGURE_CHINA_MIRROR" = "true" ]; then \
       && sed -i 's|http://security.debian.org|https://mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list.d/debian.sources \
       && npm config set registry https://registry.npmmirror.com \
       && mkdir -p /root/.config/uv \
-      && printf '[index]\nurl = "https://pypi.tuna.tsinghua.edu.cn/simple"\ndefault = true\n' > /root/.config/uv/uv.toml \
+      && printf '[[index]]\nurl = "https://pypi.tuna.tsinghua.edu.cn/simple"\ndefault = true\n' > /root/.config/uv/uv.toml \
       && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
       && git config --global url."https://ghproxy.net/https://github.com".insteadOf https://github.com; \
     fi
