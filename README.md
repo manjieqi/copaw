@@ -50,6 +50,15 @@ wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secr
 
 ## 构建
 
-镜像由 GitHub Actions 自动构建并推送 Docker Hub，无需本地构建。
+镜像由 GitHub Actions 自动构建并推送 Docker Hub。如需本地构建：
 
-> 如需本地构建：`docker build --build-arg USE_CHINA_MIRROR=true -t manjieqi/copaw .`（跳过 LibreOffice 加 `--build-arg WITH_LIBREOFFICE=false`）
+```bash
+# 国内网络
+docker build -t manjieqi/copaw .
+
+# 海外网络
+docker build --build-arg USE_CHINA_MIRROR=false -t manjieqi/copaw .
+
+# 跳过 LibreOffice（省 ~400MB）
+docker build --build-arg WITH_LIBREOFFICE=false -t manjieqi/copaw .
+```
