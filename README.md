@@ -31,6 +31,13 @@ docker run -d --name copaw --restart unless-stopped -p 8088:8088 \
   manjieqi/copaw
 ```
 
+或用 compose：
+
+```bash
+mkdir -p data secret backups
+docker compose up -d
+```
+
 ### wslc
 
 ```powershell
@@ -39,30 +46,10 @@ wslc pull manjieqi/copaw
 wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secret:/app/secret" -v "${PWD}\backups:/app/backups" -v playwright-cache:/root/.cache/ms-playwright -e QWENPAW_PORT=8088 manjieqi/copaw
 ```
 
-或用 compose：
-
-```bash
-mkdir -p data secret backups
-docker compose up -d
-```
-
 首次启动会自动执行 `qwenpaw init --defaults --accept-security`，无需手动初始化。
 
-## 本地构建
+## 构建
 
-```bash
-# 国内网络（默认启用国内镜像）
-docker build -t manjieqi/copaw .
+镜像由 GitHub Actions 自动构建并推送 Docker Hub，无需本地构建。
 
-# 海外网络
-docker build --build-arg USE_CHINA_MIRROR=false -t manjieqi/copaw .
-
-# 跳过 LibreOffice（省 ~400MB）
-docker build --build-arg WITH_LIBREOFFICE=false -t manjieqi/copaw .
-```
-
-### wslc（WSL 原生容器运行时）
-
-```powershell
-wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secret:/app/secret" -v "${PWD}\backups:/app/backups" -v playwright-cache:/root/.cache/ms-playwright -e QWENPAW_PORT=8088 manjieqi/copaw
-```
+> 如需本地构建：`docker build --build-arg USE_CHINA_MIRROR=true -t manjieqi/copaw .`（跳过 LibreOffice 加 `--build-arg WITH_LIBREOFFICE=false`）
