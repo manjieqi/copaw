@@ -19,8 +19,8 @@
 
 两个版本可选：
 
-- `manjieqi/copaw:latest` — 海外源
-- `manjieqi/copaw:china` — 内置国内镜像（清华 apt/pypi、npmmirror），容器内 apt/pip install 更快
+- `manjieqi/copaw:latest` — 内置国内镜像（清华 apt/pypi、npmmirror），默认推荐
+- `manjieqi/copaw:overseas` — 海外源
 
 ### docker
 
