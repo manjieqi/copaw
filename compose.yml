@@ -2,8 +2,8 @@ services:
   copaw:
     image: manjieqi/copaw
     container_name: copaw
-    # ports:
-    #   - 8088:8088
+    ports:
+      - 8088:8088
     volumes:
       - ./data:/app/data
       - ./secret:/app/secret

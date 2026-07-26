@@ -62,7 +62,7 @@ wslc run -d --name copaw -p 8088:8088 -v "${PWD}\data:/app/data" -v "${PWD}\secr
 docker build -t manjieqi/copaw .
 
 # 海外网络
-docker build --build-arg USE_CHINA_MIRROR=false -t manjieqi/copaw .
+docker build --build-arg CONFIGURE_CHINA_MIRROR=false -t manjieqi/copaw .
 
 # 跳过 LibreOffice（省 ~400MB）
 docker build --build-arg WITH_LIBREOFFICE=false -t manjieqi/copaw .
