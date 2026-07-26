@@ -39,4 +39,4 @@ jobs:
           push: true
           tags: manjieqi/copaw:${{ matrix.tag }}
           build-args: |
-            USE_CHINA_MIRROR=${{ matrix.china_mirror }}
+            CONFIGURE_CHINA_MIRROR=${{ matrix.china_mirror }}
