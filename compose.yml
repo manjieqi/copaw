@@ -1,0 +1,21 @@
+services:
+  copaw:
+    image: manjieqi/copaw
+    container_name: copaw
+    # ports:
+    #   - "8088:8088"
+    volumes:
+      - ./data:/app/data
+      - ./secret:/app/secret
+      - ./backups:/app/backups
+      - playwright-cache:/root/.cache/ms-playwright
+    environment:
+      - QWENPAW_PORT=8088
+      # 认证
+      # - QWENPAW_AUTH_ENABLED=true
+      # - QWENPAW_AUTH_USERNAME=admin
+      # - QWENPAW_AUTH_PASSWORD=xxx
+    restart: unless-stopped
+
+volumes:
+  playwright-cache:
