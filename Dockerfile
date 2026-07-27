@@ -56,12 +56,12 @@ RUN if [ "$WITH_LIBREOFFICE" = "true" ]; then \
 
 # ── 切换到国内镜像 ──
 RUN if [ "$CONFIGURE_CHINA_MIRROR" = "true" ]; then \
-      sed -i 's|http://deb.debian.org|https://mirrors.tuna.tsinghua.edu.cn|g' /etc/apt/sources.list.d/debian.sources \
-      && sed -i 's|http://security.debian.org|https://mirrors.tuna.tsinghua.edu.cn/debian-security|g' /etc/apt/sources.list.d/debian.sources \
+      sed -i 's|http://deb.debian.org|https://mirrors.aliyun.com|g' /etc/apt/sources.list.d/debian.sources \
+      && sed -i 's|http://security.debian.org|https://mirrors.aliyun.com/debian-security|g' /etc/apt/sources.list.d/debian.sources \
       && npm config set registry https://registry.npmmirror.com \
       && mkdir -p /root/.config/uv \
-      && printf '[[index]]\nurl = "https://pypi.tuna.tsinghua.edu.cn/simple"\ndefault = true\n' > /root/.config/uv/uv.toml \
-      && pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple \
+      && printf '[[index]]\nurl = "https://mirrors.aliyun.com/pypi/simple"\ndefault = true\n' > /root/.config/uv/uv.toml \
+      && pip config set global.index-url https://mirrors.aliyun.com/pypi/simple \
       && git config --global url."https://ghproxy.net/https://github.com".insteadOf https://github.com; \
     fi
 

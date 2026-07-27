@@ -19,7 +19,7 @@
 
 两个版本可选：
 
-- `manjieqi/copaw:latest` — 内置国内镜像（清华 apt/pypi、npmmirror），默认推荐
+- `manjieqi/copaw:latest` — 内置国内镜像（阿里 apt/pypi、npmmirror），默认推荐
 - `manjieqi/copaw:overseas` — 海外源
 
 ### docker
